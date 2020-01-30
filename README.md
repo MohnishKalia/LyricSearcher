@@ -1,44 +1,31 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## LyricSearcher
 
-In the project directory, you can run:
+LyricSearcher is an app designed to fetch lyrical data from the MusixMatch API and translate the search experience into an interactive walkthrough a song.
 
-### `npm start`
+This app was map possible by Create React App and Material-UI.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Home
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+On page load, the first page that loads is a home page with a search box, a quantity selector, and a progress spinner.
 
-### `npm test`
+Upon sucessful fetch of data, the spinner will be replaced with a grid of cards that represent the top hits in card format with artist, track, and album.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![home-gif](demos/Home.gif)
 
-### `npm run build`
+### Search
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The search box at the top allows you to search for lyrics and have the results automatically update after a short delay. Changing the amount of cards also re-fetches the data.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![search-gif](demos/Search.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Song Information
 
-### `npm run eject`
+On every card result, a button labeled `View Lyrics & More` is present.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Clicking on that button will re-route the page to a personalized info page for that track where (30% of the) lyrics, as well as ID, relative popularity, genres, etc. are present.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use the `Go Back` button to return to the home page and continue browsing.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![songinfo-gif](demos/SongInfo.gif)

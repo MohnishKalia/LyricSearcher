@@ -85,7 +85,6 @@ const Home: React.FC = () => {
     React.useEffect(() => {
         fetch(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${dbQuery}&page_size=${amount}&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => (res.json() as Promise<SearchRes>))
-            //.then(json => { console.log(json); return json; })
             .then(json => setSongs(json.message.body.track_list))
     }, [dbQuery, amount]);
 

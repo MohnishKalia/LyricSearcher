@@ -29,3 +29,9 @@ Clicking on that button will re-route the page to a personalized info page for t
 Use the `Go Back` button to return to the home page and continue browsing.
 
 ![songinfo-gif](demos/SongInfo.gif)
+
+### Important Info
+
+If you are planning to deploy this on a local machine or CodeSandbox, make a `.env` file in the root directory with `REACT_APP_API_KEY=<your Musixmatch api key here>`.
+
+Failure to do so will prevent a successful deploy.

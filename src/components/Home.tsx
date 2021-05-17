@@ -129,7 +129,7 @@ const Home: React.FC = () => {
 
 export const SongItem: React.FC<{ song: Track }> = ({ song }) =>
     <Grid item md={4} zeroMinWidth>
-        <Card>
+        <Card style={{ flexGrow: 1 }}>
             <CardContent>
                 <Typography variant="h5" component="h2" noWrap={true}>
                     {song.track.artist_name}

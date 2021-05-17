@@ -104,12 +104,12 @@ const SongInfo = ({ match }: RouteComponentProps<TParams>) => {
     const classes = useStyles();
 
     useEffect(() => {
-        fetch(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${match.params.id}&apikey=${process.env.REACT_APP_API_KEY}`)
+        fetch(`${process.env.REACT_APP_PROXY_URL}/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${match.params.id}&apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => (res.json() as Promise<LyricsRes>))
             .then(json => { console.log('lyric', json); return json; })
             .then(json => {
                 setLyrics(json.message.body.lyrics);
-                return fetch(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.get?track_id=${match.params.id}&apikey=${process.env.REACT_APP_API_KEY}`);
+                return fetch(`${process.env.REACT_APP_PROXY_URL}/http://api.musixmatch.com/ws/1.1/track.get?track_id=${match.params.id}&apikey=${process.env.REACT_APP_API_KEY}`);
             })
             .then(res => (res.json() as Promise<TrackRes>))
             .then(json => { console.log('track', json); return json; })

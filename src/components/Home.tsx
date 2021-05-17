@@ -114,7 +114,7 @@ const Home: React.FC = () => {
                     {values.map(val => <MenuItem value={val} key={val}>{val}</MenuItem>)}
                 </Select>
             </FormControl>
-            <Box my={2}>
+            <Box mt={2}>
                 {songs.length > 0
                     ?
                     <Grid container spacing={3}>

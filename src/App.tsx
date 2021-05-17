@@ -34,19 +34,19 @@ function App() {
       <CssBaseline />
       <Router>
         <Header />
-        {process.env.REACT_APP_API_KEY
-          ?
-          <Container fixed>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/info/track/:id" component={SongInfo} />
-            </Switch>
-          </Container>
-          :
-          <Box my={2}>
+        <Box my={2}>
+          {process.env.REACT_APP_API_KEY
+            ?
+            <Container fixed>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/info/track/:id" component={SongInfo} />
+              </Switch>
+            </Container>
+            :
             <Typography variant="body1" color="inherit" align="center">No Musixmatch API Key found</Typography>
-          </Box>
-        }
+          }
+        </Box>
         <Footer title="LyricSearcher" description="Made with ⚛ React, Ⓜ Material-UI, and ♡ Love!" />
       </Router>
     </ThemeProvider>

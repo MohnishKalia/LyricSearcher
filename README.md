@@ -6,6 +6,12 @@ LyricSearcher is an app designed to fetch lyrical data from the MusixMatch API a
 
 This app was map possible by Create React App and Material-UI.
 
+### Important Info
+
+If you are planning to deploy this app, rename the `.env.sample` file to `.env` and change the line `REACT_APP_API_KEY=<your Musixmatch api key here>`.
+
+Failure to do so will prevent the app from functioning properly.
+
 ### Home
 
 On page load, the first page that loads is a home page with a search box, a quantity selector, and a progress spinner.
@@ -29,9 +35,3 @@ Clicking on that button will re-route the page to a personalized info page for t
 Use the `Go Back` button to return to the home page and continue browsing.
 
 ![songinfo-gif](demos/SongInfo.gif)
-
-### Important Info
-
-If you are planning to deploy this on a local machine or CodeSandbox, make a `.env` file in the root directory with `REACT_APP_API_KEY=<your Musixmatch api key here>`.
-
-Failure to do so will prevent a successful deploy.

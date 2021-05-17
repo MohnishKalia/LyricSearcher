@@ -9,7 +9,10 @@ import TextField from '@material-ui/core/TextField'
 import PlayCircleFilled from '@material-ui/icons/PlayCircleFilled';
 import Album from '@material-ui/icons/Album';
 import Grid from '@material-ui/core/Grid';
-import { CardContent, CardActions, Button, Card } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -20,6 +23,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { useDebounce } from 'use-lodash-debounce'
 import { Link } from 'react-router-dom'
+import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles(theme => ({
@@ -83,7 +87,7 @@ const Home: React.FC = () => {
     const values = [6, 9, 15, 21]
 
     React.useEffect(() => {
-        fetch(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${dbQuery}&page_size=${amount}&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`)
+        fetch(`${process.env.REACT_APP_PROXY_URL}/http://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${dbQuery}&page_size=${amount}&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => (res.json() as Promise<SearchRes>))
             .then(json => setSongs(json.message.body.track_list))
     }, [dbQuery, amount]);
@@ -107,15 +111,17 @@ const Home: React.FC = () => {
                     value={amount}
                     onChange={e => setAmount(e.target.value as string)}
                 >
-                    {values.map(val => <MenuItem value={val}>{val}</MenuItem>)}
+                    {values.map(val => <MenuItem value={val} key={val}>{val}</MenuItem>)}
                 </Select>
             </FormControl>
-            {songs.length > 0
-                ?
-                <Grid container spacing={3}>
-                    {songs.map(song => <SongItem song={song} key={song.track.track_id} />)}
-                </Grid>
-                : <div style={{ display: 'flex', justifyContent: 'center' }}><CircularProgress color="secondary" /></div>}
+            <Box my={2}>
+                {songs.length > 0
+                    ?
+                    <Grid container spacing={3}>
+                        {songs.map(song => <SongItem song={song} key={song.track.track_id} />)}
+                    </Grid>
+                    : <div style={{ display: 'flex', justifyContent: 'center' }}><CircularProgress color="secondary" /></div>}
+            </Box>
         </>
     );
 
@@ -158,7 +164,7 @@ export const SongItem: React.FC<{ song: Track }> = ({ song }) =>
                         to={`info/track/${song.track.track_id}`}
                         style={{ textDecoration: 'none', color: 'inherit' }}
                     >
-                        View Lyrics & More
+                        View Lyrics &amp; More
                     </Link>
                 </Button>
             </CardActions>
